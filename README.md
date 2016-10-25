@@ -1,1 +1,1 @@
-# miniproject-programmeren
+# Miniproject-programmeren
