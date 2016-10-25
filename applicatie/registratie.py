@@ -21,11 +21,7 @@ def registratie():
       gegevensingevuld = True
 
   # genereer automatisch nummer
-  uniekcode = ''
-  while len(uniekcode) < 6:
-    uniekcode += str(random.randrange(10))
-  unieknummer = int(uniekcode)
-
+  unieknummer = random.randrange(100000, 1000000)
 
   # sla gegevens op in de database met een uniek nummer en toon deze aan de gebruiker
   c.execute("INSERT INTO registratie (unieknummer, naam, tel, email) VALUES ('{}', '{}', '{}', '{}')".format(unieknummer, naam, tel, mail))
