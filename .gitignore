@@ -1,2 +1,4 @@
 # Directories
 .idea
+.DS_Store
+.pyc
