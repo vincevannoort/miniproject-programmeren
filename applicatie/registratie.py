@@ -1,2 +1,2 @@
 def registratie():
-  pass
+  print('test')
