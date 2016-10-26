@@ -20,10 +20,12 @@ def registratie(naam, tel, mail):
   # Sla gegevens op in de database met een uniek nummer en toon deze aan de gebruiker
   if naam != '' and tel != '' and mail != '' and emailbestaat == None:
     c.execute("INSERT INTO registratie (unieknummer, naam, tel, email) VALUES ('{}', '{}', '{}', '{}')".format(unieknummer, naam, tel, mail))
-    conn.commit()
-    conn.close()
     messagebox.showinfo('voltooid' , 'Uw registratie is voltooid! Uw unieke nummer is: {}, bewaar deze goed.'.format(unieknummer))
   elif emailbestaat != None:
-    messagebox.showinfo('error' , 'Er bestaat el een gebruiker met dit emailadres.')
+    messagebox.showinfo('error' , 'Er bestaat al een gebruiker met dit emailadres.')
   else:
     messagebox.showinfo('error' , 'Alle velden dienen ingevuld te worden.')
+
+  # sluit connectie met database
+  conn.commit()
+  conn.close()
