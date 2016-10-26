@@ -1,30 +1,36 @@
 import sqlite3
 import datetime
+from tkinter import messagebox
 
-def stallen(unieknummer):
+def fiets_stallen(unieknummer):
 
-  # probeer connectie met database te leggen
-  conn = sqlite3.connect('data/fietsenstalling.db')
-  c = conn.cursor()
-  c.execute('CREATE TABLE IF NOT EXISTS stallingen(id INTEGER PRIMARY KEY AUTOINCREMENT, unieknummer INTEGER NOT NULL, startdatum DATETIME NOT NULL, einddatum DATETIME)')
-
-  # als er geen unieknummer is gemaakt
-  while unieknummer == '':
-    ingevoerd_unieknummer = int(input('Voer je unieke nummer in: '))
+  try:
+    # probeer connectie met database te leggen
+    conn = sqlite3.connect('data/fietsenstalling.db')
+    c = conn.cursor()
+    c.execute('CREATE TABLE IF NOT EXISTS stallingen(id INTEGER PRIMARY KEY AUTOINCREMENT, unieknummer INTEGER NOT NULL, startdatum DATETIME NOT NULL, einddatum DATETIME)')
 
     # check if unieknummer is in de database
-    c.execute('SELECT * FROM registratie WHERE unieknummer = {}'.format(ingevoerd_unieknummer))
+    c.execute('SELECT * FROM registratie WHERE unieknummer = {}'.format(unieknummer))
     resultaat = c.fetchone()
 
-    # als er een resultaat is, zet dan het unieke nummer naar het 2e veld in de tuple om dat while loop te stoppen
-    if resultaat:
-      unieknummer = resultaat[1]
+    # check of de fiets al gestald staat
+    c.execute("SELECT * FROM stallingen WHERE unieknummer = '{}'".format(unieknummer))
+    fietsbestaat = c.fetchone()
 
-  # sla de stalgegevens op in de SQLite database
-  current_time = datetime.datetime.now()
-  print(current_time)
+    # sla de stalgegevens op in de SQLite database
+    if resultaat and fietsbestaat == None:
+      current_time = datetime.datetime.now()
+      c.execute("INSERT INTO stallingen (unieknummer, startdatum) VALUES ('{}', '{}')".format(unieknummer, current_time))
+      messagebox.showinfo('voltooid' , 'Gelukt, uw fiets wordt gestald!')
+    elif fietsbestaat != None:
+      messagebox.showinfo('error' , 'Sorry, uw fiets staat al gestald in onze stalling.')
+    else:
+      messagebox.showinfo('error' , 'Sorry, er bestaat geen fiets bij dit unieke nummer.')
 
-  c.execute("INSERT INTO stallingen (unieknummer, startdatum) VALUES ('{}', '{}')".format(unieknummer, current_time))
-  conn.commit()
-  conn.close()
+    # sluit connectie met database
+    conn.commit()
+    conn.close()
 
+  except sqlite3.OperationalError:
+    messagebox.showinfo('error' , 'Sorry, een unieknummer bestaat alleen uit cijfers.')

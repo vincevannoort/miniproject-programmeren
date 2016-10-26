@@ -137,7 +137,7 @@ class PageRegistreren(Frame):
 
     # Als de button wordt ingedrukt, wordt de functie registratie_doorvoeren binnen de controller aangeroepen die de parameters van de input velden meekrijgt
     Button(registreren, text='registreer  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: registratie(entryNaam.get(), entryTel.get(), entryEmail.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
-    Button(registreren, text='< terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
+    Button(registreren, text='<  terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
 
 class PageStallen(Frame):
   def __init__(self, parent, controller):
@@ -158,12 +158,27 @@ class PageStallen(Frame):
     Label(header, text='NS | Stallen', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 2. Fiets stallen
-    stallen = Frame(body, height=526, width=1120, bg='#E6B517')
+    stallen = Frame(body, height=526, width=432, bg='#E6B517')
     stallen.pack_propagate(0)
-    stallen.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
+    stallen.grid(row=1, column=1, padx=(0), pady=(35,40))
+    background_container = Frame(body, height=526, width=688, bg='red')
+    background_container.pack_propagate(0)
+    background_container.grid(row=1, column=2, padx=(0, 40), pady=(35,40))
+    background_image = PhotoImage(file='afbeeldingen/stallen.gif')
+    background_label = Label(background_container, image=background_image)
+    background_label.image = background_image # reference zodat de afbeelding niet verdwijnt
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
     Label(stallen, text='Stallen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(stallen, text='Indien u geregistreerd staat, kunt u uw fiets stallen \nmet uw unieke nummer verkregen bij het registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(stallen, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+    Label(stallen, text='Indien u geregistreerd staat, kunt u uw fiets stallen \nmet uw unieke nummer verkregen bij \nhet registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+
+    # Stallen velden
+    entryUniekNummer = Entry(stallen, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
+    entryUniekNummer.insert(0, 'UniekNummer:')
+    entryUniekNummer.pack(anchor='w', padx=30, pady=(30,30))
+
+    # Als de button wordt ingedrukt...
+    Button(stallen, text='stal fiets  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: fiets_stallen(entryUniekNummer.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
+    Button(stallen, text='<  terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
 
 class PageInformatie(Frame):
   def __init__(self, parent, controller):
