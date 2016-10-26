@@ -64,7 +64,7 @@ class PageOverzicht(Frame):
     registreren.pack_propagate(0)
     registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
     Label(registreren, text='Registreren', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(registreren, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(registreren, text='Als nieuwe gebruiker van de fietsenstalling, \nzul je je eerst moeter registreren. Dit is een eenmalig proces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(registreren, text='Registreer nu  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageRegistreren')).pack(side='left', padx=30)
 
     # 2. Fiets stallen
@@ -72,7 +72,7 @@ class PageOverzicht(Frame):
     stallen.pack_propagate(0)
     stallen.grid(row=1, column=2, padx=(40, 0), pady=(35,40))
     Label(stallen, text='Stallen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(stallen, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(stallen, text='Indien u geregistreerd staat, kunt u uw fiets stallen \nmet uw unieke nummer verkregen bij het registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(stallen, text='Fiets stallen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageStallen')).pack(side='left', padx=30)
 
     # 3. Informatie ophalen
@@ -80,7 +80,7 @@ class PageOverzicht(Frame):
     informatie.pack_propagate(0)
     informatie.grid(row=2, column=1, padx=(0, 40), pady=(40,35))
     Label(informatie, text='Informatie ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(informatie, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(informatie, text='Als u geintreseerd bent in algmene- of persoonlijke informatie \nover de fietsenstalling, dan kunt u hier meer over lezen.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(informatie, text='Informatie ophalen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageInformatie')).pack(side='left', padx=30)
 
     # 4. Fiets ophalen
@@ -88,7 +88,7 @@ class PageOverzicht(Frame):
     ophalen.pack_propagate(0)
     ophalen.grid(row=2, column=2, padx=(40, 0), pady=(40,35))
     Label(ophalen, text='Fiets ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(ophalen, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(ophalen, text='Binnen 2 maanden na stalling kunt u uw fiets ophalen \nmet uw unieke nummer verkregen bij het registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(ophalen, text='Fiets ophalen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOphalen')).pack(side='left', padx=30)
 
 
@@ -115,7 +115,7 @@ class PageRegistreren(Frame):
     registreren.pack_propagate(0)
     registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
     Label(registreren, text='Registreren', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(registreren, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(registreren, text='Als nieuwe gebruiker van de fietsenstalling, \nzul je je eerst moeter registreren. Dit is een eenmalig proces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
 
     # Registratie velden
     entryNaam = Entry(registreren, font=font_body, bg='white', justify=LEFT)
@@ -156,7 +156,7 @@ class PageStallen(Frame):
     stallen.pack_propagate(0)
     stallen.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
     Label(stallen, text='Stallen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(stallen, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(stallen, text='Indien u geregistreerd staat, kunt u uw fiets stallen \nmet uw unieke nummer verkregen bij het registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(stallen, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
 
 class PageInformatie(Frame):
@@ -182,7 +182,7 @@ class PageInformatie(Frame):
     informatie.pack_propagate(0)
     informatie.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
     Label(informatie, text='Informatie ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(informatie, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(informatie, text='Als u geintreseerd bent in algmene- of persoonlijke informatie \nover de fietsenstalling, dan kunt u hier meer over lezen.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(informatie, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
 
 class PageOphalen(Frame):
@@ -208,7 +208,7 @@ class PageOphalen(Frame):
     ophalen.pack_propagate(0)
     ophalen.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
     Label(ophalen, text='Fiets ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(ophalen, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(ophalen, text='Binnen 2 maanden na stalling kunt u uw fiets ophalen \nmet uw unieke nummer verkregen bij het registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     Button(ophalen, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
 
 if __name__ == '__main__':
