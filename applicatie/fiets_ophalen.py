@@ -6,11 +6,11 @@ def fiets_ophalen(unieknummer):
     c = conn.cursor()
     c.execute('CREATE TABLE IF NOT EXISTS stallingen(id INTEGER PRIMARY KEY AUTOINCREMENT, unieknummer INTEGER NOT NULL, startdatum DATETIME NOT NULL, einddatum DATETIME)')
 
-#Gebruiker voert nummer in
+# Gebruiker voert nummer in
     while unieknummer == '':
         invoer = int(input('Geef uw unieke nummer: '))
 
-        #checkt of de fiets nu gestald is
+        # Checkt of de fiets nu gestald is
         c.execute('SELECT * FROM stallingen WHERE unieknummer = {}'.format(invoer))
         resultaat = c.fetchone()
 
