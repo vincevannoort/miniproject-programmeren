@@ -9,3 +9,6 @@
 *.jpg
 
 __pycache__
+*.py
+*.db
+*.py
