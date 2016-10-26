@@ -111,27 +111,33 @@ class PageRegistreren(Frame):
     Label(header, text='NS | Registreren', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 1. Registreren
-    registreren = Frame(body, height=526, width=1120, bg='#E6B517')
+    registreren = Frame(body, height=526, width=432, bg='#E6B517')
     registreren.pack_propagate(0)
-    registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
+    registreren.grid(row=1, column=1, padx=(0), pady=(35,40))
+    background_container = Frame(body, height=526, width=688, bg='red')
+    background_container.pack_propagate(0)
+    background_container.grid(row=1, column=2, padx=(0, 40), pady=(35,40))
+    background_image = PhotoImage(file='afbeeldingen/registreren.gif')
+    background_label = Label(background_container, image=background_image)
+    background_label.image = background_image # reference zodat de afbeelding niet verdwijnt
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
     Label(registreren, text='Registreren', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(registreren, text='Als nieuwe gebruiker van de fietsenstalling, \nzul je je eerst moeter registreren. Dit is een eenmalig proces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Label(registreren, text='Als nieuwe gebruiker van de fietsenstalling, \nzul je je eerst moeter registreren. \nDit is een eenmalig proces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
 
     # Registratie velden
-    entryNaam = Entry(registreren, font=font_body, bg='white', justify=LEFT)
+    entryNaam = Entry(registreren, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
     entryNaam.insert(0, 'Naam:')
     entryNaam.pack(anchor='w', padx=30, pady=(30,10))
-    entryTel = Entry(registreren, font=font_body, bg='white', justify=LEFT)
+    entryTel = Entry(registreren, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
     entryTel.insert(0, 'Telefoonnummer:')
     entryTel.pack(anchor='w', padx=30, pady=10)
-    entryEmail = Entry(registreren, font=font_body, bg='white', justify=LEFT)
+    entryEmail = Entry(registreren, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
     entryEmail.insert(0, 'Email:')
     entryEmail.pack(anchor='w', padx=30, pady=(10,30))
 
     # Als de button wordt ingedrukt, wordt de functie registratie_doorvoeren binnen de controller aangeroepen die de parameters van de input velden meekrijgt
-    Button(registreren, text='registreer  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, 
-        command=lambda: registratie(entryNaam.get(), entryTel.get(), entryEmail.get())).pack(side='left', anchor='w', padx=(30, 10))
-    Button(registreren, text='terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', anchor='w', padx=(10, 30))
+    Button(registreren, text='registreer  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: registratie(entryNaam.get(), entryTel.get(), entryEmail.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
+    Button(registreren, text='< terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
 
 class PageStallen(Frame):
   def __init__(self, parent, controller):
