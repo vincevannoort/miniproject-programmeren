@@ -3,10 +3,9 @@ import datetime
 
 def info_opvragen():
 
-  plaatsen_vrij = 1000;
+  plaatsen_vrij = 1000
   conn = sqlite3.connect('data/fietsenstalling.db')
   c = conn.cursor()
-  c.execute('CREATE TABLE IF NOT EXISTS stallingen(id INTEGER PRIMARY KEY AUTOINCREMENT, unieknummer INTEGER NOT NULL, startdatum DATETIME NOT NULL, einddatum DATETIME)')
 
   c.execute('SELECT * FROM stallingen WHERE einddatum NOT NULL ORDER BY id')
   resultaat = c.fetchall()
