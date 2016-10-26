@@ -2,8 +2,8 @@
 import sqlite3
 
 # tk inter modules
-from Tkinter import *
-import tkFont
+from tkinter import *
+from tkinter import font
 
 # app functions
 from registratie import *
@@ -30,8 +30,8 @@ body = Frame(root, height=125, bg='#FFC400', padx=80, pady=45)
 body.pack(side=TOP, fill=X)
 
 # Fonts
-font_header = tkFont.Font(family='Open Sans', size=32, weight='normal')
-font_body = tkFont.Font(family='Open Sans', size=16, weight='normal')
+font_header = font.Font(family='Open Sans', size=32, weight='normal')
+font_body = font.Font(family='Open Sans', size=16, weight='normal')
 
 # 1. Registreren
 registreren = Frame(body, height=225, width=520, bg='#E6B517')
