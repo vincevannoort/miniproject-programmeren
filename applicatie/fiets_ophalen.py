@@ -22,5 +22,3 @@ def fiets_ophalen(unieknummer):
             print('Uw fiets is opgehaald, doei!')
         else:
             print('Dit is is geen geldig nummer')
-
-fiets_ophalen('')

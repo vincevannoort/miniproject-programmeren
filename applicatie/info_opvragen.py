@@ -27,5 +27,3 @@ def persoonlijke_info(unieknummer):
      print('Hallo, {}'.format(uitdraai[0]))
      print('Uw 06-nummer is {}'.format(uitdraai[1]))
      print('Uw email adres is {}'.format(uitdraai[2]))
-
-info_opvragen()
