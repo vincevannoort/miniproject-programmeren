@@ -110,7 +110,22 @@ class PageRegistreren(Frame):
     registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
     Label(registreren, text='Registreren', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
     Label(registreren, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(registreren, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+
+
+    entryNaam = Entry(registreren, font=font_body, bg='white', justify=LEFT)
+    entryNaam.insert(0, 'Naam:')
+    entryNaam.pack(anchor='w', padx=30, pady=(30,10))
+    entryEmail = Entry(registreren, font=font_body, bg='white', justify=LEFT)
+    entryEmail.insert(0, 'Email:')
+    entryEmail.pack(anchor='w', padx=30, pady=10)
+    entryTel = Entry(registreren, font=font_body, bg='white', justify=LEFT)
+    entryTel.insert(0, 'Telefoonnummer:')
+    entryTel.pack(anchor='w', padx=30, pady=(10,30))
+
+    Button(registreren, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=30, pady=10)
+
+
+
 
 class PageStallen(Frame):
   def __init__(self, parent, controller):
