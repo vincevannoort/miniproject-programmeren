@@ -131,13 +131,13 @@ class PageStallen(Frame):
     font_header = font.Font(family='Open Sans', size=32, weight='normal')
     font_body = font.Font(family='Open Sans', size=16, weight='normal')
 
-    # 1. Registreren
-    registreren = Frame(body, height=526, width=1120, bg='#E6B517')
-    registreren.pack_propagate(0)
-    registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
-    Label(registreren, text='Stallen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(registreren, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(registreren, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+    # 2. Fiets stallen
+    stallen = Frame(body, height=526, width=1120, bg='#E6B517')
+    stallen.pack_propagate(0)
+    stallen.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
+    Label(stallen, text='Stallen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
+    Label(stallen, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Button(stallen, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
 
 class PageInformatie(Frame):
   def __init__(self, parent, controller):
@@ -156,13 +156,13 @@ class PageInformatie(Frame):
     font_header = font.Font(family='Open Sans', size=32, weight='normal')
     font_body = font.Font(family='Open Sans', size=16, weight='normal')
 
-    # 1. Registreren
-    registreren = Frame(body, height=526, width=1120, bg='#E6B517')
-    registreren.pack_propagate(0)
-    registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
-    Label(registreren, text='Informatie ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(registreren, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(registreren, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+    # 3. Informatie ophalen
+    informatie = Frame(body, height=526, width=1120, bg='#E6B517')
+    informatie.pack_propagate(0)
+    informatie.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
+    Label(informatie, text='Informatie ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
+    Label(informatie, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Button(informatie, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
 
 class PageOphalen(Frame):
   def __init__(self, parent, controller):
@@ -181,13 +181,13 @@ class PageOphalen(Frame):
     font_header = font.Font(family='Open Sans', size=32, weight='normal')
     font_body = font.Font(family='Open Sans', size=16, weight='normal')
 
-    # 1. Registreren
-    registreren = Frame(body, height=526, width=1120, bg='#E6B517')
-    registreren.pack_propagate(0)
-    registreren.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
-    Label(registreren, text='Fiets ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(registreren, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(registreren, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+    # 4. Fiets ophalen
+    ophalen = Frame(body, height=526, width=1120, bg='#E6B517')
+    ophalen.pack_propagate(0)
+    ophalen.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
+    Label(ophalen, text='Fiets ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
+    Label(ophalen, text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nIn urna tellus, egestas vel leo quis, faucibus porta orci.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    Button(ophalen, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
 
 if __name__ == '__main__':
     app = FietsenStallingApp()
