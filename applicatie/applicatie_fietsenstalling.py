@@ -6,3 +6,4 @@ from info_opvragen import *
 from fiets_ophalen import *
 
 # GUI TKINTER INTERFACE
+registratie()

@@ -3,3 +3,9 @@
 .DS_Store
 .pyc
 *.pyc
+
+*.svg
+
+*.jpg
+
+__pycache__
