@@ -8,4 +8,6 @@ from fiets_ophalen import *
 
 # Begin met het creeren van een window
 root = Tk()
+root.attributes('-fullscreen', True)
+root.configure(bg='#FFC917')
 root.mainloop()
