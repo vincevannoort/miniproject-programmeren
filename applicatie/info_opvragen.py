@@ -12,6 +12,13 @@ def info_opvragen():
   resultaat = c.fetchall()
   vrije_plaatsen = plaatsen_vrij - len(resultaat)
   print('Er zijn momenteel {} plaatsen vrij'.format(vrije_plaatsen))
+  keuze = int(input('Wilt u uw eigen gegevens inzien?'))
+  if keuze == 1:
+      unieknummer = int(input('Voer uw persoonlijke nummer in:'))
+      persoonlijke_info(unieknummer)
+  else:
+      print('Geen probleem')
+
 
 def persoonlijke_info(unieknummer):
      conn = sqlite3.connect('data/fietsenstalling.db')
