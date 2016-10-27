@@ -18,7 +18,10 @@ def registratie(naam, tel, mail):
   emailbestaat = c.fetchone()
 
   # Check of telefoonnummer valid is
-  # TODO
+  if tel.isdigit() == False or len(tel) != 10 or tel[:2] != '06':
+    tel = ''
+    messagebox.showinfo('error', 'Voer een geldig 06-nummer in.')
+
 
   # Sla gegevens op in de database met een uniek nummer en toon deze aan de gebruiker
   if naam != '' and tel != '' and mail != '' and emailbestaat == None:
@@ -27,7 +30,7 @@ def registratie(naam, tel, mail):
   elif emailbestaat != None:
     messagebox.showinfo('error' , 'Er bestaat al een gebruiker met dit emailadres.')
   else:
-    messagebox.showinfo('error' , 'Alle velden dienen ingevuld te worden.')
+    messagebox.showinfo('error' , 'Alle velden dienen correct ingevuld te worden.')
 
   # sluit connectie met database
   conn.commit()
