@@ -18,12 +18,15 @@ def fiets_ophalen(unieknummer):
     c.execute('CREATE TABLE IF NOT EXISTS stallingen(id INTEGER PRIMARY KEY AUTOINCREMENT, unieknummer INTEGER NOT NULL, startdatum DATETIME NOT NULL, einddatum DATETIME)')
 
     # check of de fiets gestald staat
-    c.execute("SELECT * FROM stallingen WHERE unieknummer = '{}'".format(unieknummer))
+    c.execute("SELECT * FROM stallingen WHERE unieknummer = '{}' ORDER BY id DESC LIMIT 1".format(unieknummer))
     fietsbestaat = c.fetchone()
+
+    # zet de einddatum op None, als standaard
+    einddatum = None
     if fietsbestaat != None: 
       einddatum = fietsbestaat[-1]
 
-    if fietsbestaat and einddatum == '':
+    if fietsbestaat and einddatum == None:
       # two factor authenticatie proces doormiddel van SMS van Twilio
       c.execute('SELECT * FROM registratie WHERE unieknummer = {}'.format(unieknummer))
       persoonsgegevens = c.fetchone()
@@ -46,7 +49,7 @@ def fiets_ophalen(unieknummer):
       else:
         messagebox.showinfo('error' , 'Sorry, uw code is niet juist! Probeer het opnieuw.')
 
-    elif fietsbestaat and einddatum != '':
+    elif fietsbestaat and einddatum != None:
       messagebox.showinfo('error' , 'Sorry, uw fiets is al opgehaald.')
 
     else:

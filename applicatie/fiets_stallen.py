@@ -22,11 +22,17 @@ def fiets_stallen(unieknummer):
     resultaat = c.fetchone()
 
     # check of de fiets al gestald staat
-    c.execute("SELECT * FROM stallingen WHERE unieknummer = '{}'".format(unieknummer))
+    c.execute("SELECT * FROM stallingen WHERE unieknummer = '{}' ORDER BY id DESC LIMIT 1".format(unieknummer))
     fietsbestaat = c.fetchone()
 
+    # zet de einddatum op None, als standaard
+    einddatum = None
+    if fietsbestaat != None: 
+      einddatum = fietsbestaat[-1]
+
     # sla de stalgegevens op in de SQLite database
-    if resultaat and fietsbestaat == None:
+    #  | als geregistreerd en fiet niets bestaat | of | als geregistreerd en fiets is al opgehaald mag er opnieuw worden gestald |
+    if resultaat and fietsbestaat == None or resultaat and einddatum != None:
 
       # two factor authenticatie proces doormiddel van SMS van Twilio
       c.execute('SELECT * FROM registratie WHERE unieknummer = {}'.format(unieknummer))
@@ -52,7 +58,7 @@ def fiets_stallen(unieknummer):
 
     elif fietsbestaat != None:
       messagebox.showinfo('error' , 'Sorry, uw fiets staat al gestald in onze stalling.')
-      
+
     else:
       messagebox.showinfo('error' , 'Sorry, er bestaat geen fiets bij dit unieke nummer.')
 
