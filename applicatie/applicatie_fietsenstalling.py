@@ -225,12 +225,27 @@ class PageOphalen(Frame):
     Label(header, text='NS | Fiets ophalen', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 4. Fiets ophalen
-    ophalen = Frame(body, height=526, width=1120, bg='#E6B517')
+    ophalen = Frame(body, height=526, width=432, bg='#E6B517')
     ophalen.pack_propagate(0)
-    ophalen.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
+    ophalen.grid(row=1, column=1, padx=(0), pady=(35,40))
+    background_container = Frame(body, height=526, width=688)
+    background_container.pack_propagate(0)
+    background_container.grid(row=1, column=2, padx=(0, 40), pady=(35,40))
+    background_image = PhotoImage(file='afbeeldingen/ophalen.gif')
+    background_label = Label(background_container, image=background_image)
+    background_label.image = background_image # reference zodat de afbeelding niet verdwijnt
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
     Label(ophalen, text='Fiets ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(ophalen, text='Binnen 2 maanden na stalling kunt u uw fiets ophalen \nmet uw unieke nummer verkregen bij het registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(ophalen, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+    Label(ophalen, text='Binnen 2 maanden na stalling kunt u uw fiets \nophalen met uw unieke nummer verkregen bij \nhet registratieproces.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+
+    # Stallen velden
+    entryUniekNummer = Entry(ophalen, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
+    entryUniekNummer.insert(0, 'UniekNummer:')
+    entryUniekNummer.pack(anchor='w', padx=30, pady=(30,30))
+
+    # Als de button wordt ingedrukt...
+    Button(ophalen, text='fiets ophalen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: fiets_ophalen(entryUniekNummer.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
+    Button(ophalen, text='<  terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
 
 if __name__ == '__main__':
     app = FietsenStallingApp()

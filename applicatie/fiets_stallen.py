@@ -49,8 +49,10 @@ def fiets_stallen(unieknummer):
         messagebox.showinfo('voltooid' , 'Gelukt, uw fiets wordt gestald!')
       else:
         messagebox.showinfo('error' , 'Sorry, uw code is niet juist! Probeer het opnieuw.')
+
     elif fietsbestaat != None:
       messagebox.showinfo('error' , 'Sorry, uw fiets staat al gestald in onze stalling.')
+      
     else:
       messagebox.showinfo('error' , 'Sorry, er bestaat geen fiets bij dit unieke nummer.')
 
