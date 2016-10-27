@@ -3,7 +3,7 @@ import random
 from tkinter import messagebox
 
 def registratie(naam, tel, mail):
-  'Registreert een gebruiker in de database'
+  '''Functie voor het registreren van persoonsgegevens voor stalling'''
 
   # Probeer connectie met database te leggen
   conn = sqlite3.connect('data/fietsenstalling.db')

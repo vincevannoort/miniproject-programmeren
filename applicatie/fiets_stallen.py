@@ -9,6 +9,7 @@ auth_token = "789143f9e3f7dd896db124a30ab0eeaa"
 client = TwilioRestClient(account_sid, auth_token)
 
 def fiets_stallen(unieknummer):
+  '''Functie voor het stallen van fietsen na registratie met 2FA beveiliging'''
 
   try:
     # probeer connectie met database te leggen

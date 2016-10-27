@@ -2,6 +2,7 @@ import sqlite3
 import datetime
 
 def info_opvragen():
+  '''Functie voor het ophalen van persoonlijke- of algemene informatie over de fietsenstalling'''
 
   plaatsen_vrij = 1000
   conn = sqlite3.connect('data/fietsenstalling.db')

@@ -2,6 +2,8 @@ import sqlite3
 import datetime
 
 def fiets_ophalen(unieknummer):
+  '''Functie voor het ophalen van fietsen na registratie met 2FA beveiliging'''
+  
   try:
     # probeer connectie met database te leggen
     conn = sqlite3.connect('data/fietsenstalling.db')
