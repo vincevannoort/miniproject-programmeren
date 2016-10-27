@@ -17,6 +17,9 @@ def registratie(naam, tel, mail):
   c.execute("SELECT * FROM registratie WHERE email = '{}'".format(mail))
   emailbestaat = c.fetchone()
 
+  # Check of telefoonnummer valid is
+  # TODO
+
   # Sla gegevens op in de database met een uniek nummer en toon deze aan de gebruiker
   if naam != '' and tel != '' and mail != '' and emailbestaat == None:
     c.execute("INSERT INTO registratie (unieknummer, naam, tel, email) VALUES ('{}', '{}', '{}', '{}')".format(unieknummer, naam, tel, mail))
