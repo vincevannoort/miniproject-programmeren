@@ -128,14 +128,14 @@ class PageRegistreren(Frame):
 
     # Registratie velden
     entryNaam = Entry(registreren, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
-    entryNaam.insert(0, 'Naam:')
-    entryNaam.pack(anchor='w', padx=30, pady=(30,10))
+    Label(registreren, text='Naam:', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both', pady=(20,0))
+    entryNaam.pack(anchor='w', padx=30)
     entryTel = Entry(registreren, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
-    entryTel.insert(0, 'Telefoonnummer:')
-    entryTel.pack(anchor='w', padx=30, pady=10)
+    Label(registreren, text='Telefoonnummer:', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both', pady=(0))
+    entryTel.pack(anchor='w', padx=30)
     entryEmail = Entry(registreren, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
-    entryEmail.insert(0, 'Email:')
-    entryEmail.pack(anchor='w', padx=30, pady=(10,30))
+    Label(registreren, text='E-mailadres:', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both', pady=(0))
+    entryEmail.pack(anchor='w', padx=30, pady=(0,30))
 
     # Als de button wordt ingedrukt, wordt de functie registratie_doorvoeren binnen de controller aangeroepen die de parameters van de input velden meekrijgt
     Button(registreren, text='registreer  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: registratie(entryNaam.get(), entryTel.get(), entryEmail.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
@@ -175,8 +175,8 @@ class PageStallen(Frame):
 
     # Stallen velden
     entryUniekNummer = Entry(stallen, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
-    entryUniekNummer.insert(0, 'UniekNummer:')
-    entryUniekNummer.pack(anchor='w', padx=30, pady=(30,30))
+    Label(stallen, text='Unieknummer:', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both', pady=(20,0))
+    entryUniekNummer.pack(anchor='w', padx=30, pady=(0,30))
 
     # Als de button wordt ingedrukt...
     Button(stallen, text='stal fiets  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: fiets_stallen(entryUniekNummer.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
@@ -211,8 +211,8 @@ class PageInformatie(Frame):
 
     # Informtaie velden
     entryUniekNummer = Entry(informatie, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
-    entryUniekNummer.insert(0, 'UniekNummer:')
-    entryUniekNummer.pack(anchor='w', padx=30, pady=(30,30))
+    Label(informatie, text='Unieknummer:', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both', pady=(20,0))
+    entryUniekNummer.pack(anchor='w', padx=30, pady=(0,30))
 
     Button(informatie, text='persoonlijke informatie ophalen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: persoonlijke_info(entryUniekNummer.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
     Button(informatie, text='<  terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
@@ -220,19 +220,16 @@ class PageInformatie(Frame):
     algemene_informatie = Frame(body, height=526, width=688, bg='#E6B517')
     algemene_informatie.pack_propagate(0)
     algemene_informatie.grid(row=1, column=2, padx=(0, 40), pady=(35,40))
-    vrije_plaatsen = info_opvragen()
     Label(algemene_informatie, text='Algemene informatie', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
     Label(algemene_informatie, text='Op dit station kunt u een fiets huren bij de bewaakte fietsenstalling. \nOm een fiets te huren heeft u een geldig legitimatiebewijs nodig. \nU betaalt een borg varierend van €50 (voor de eenvoudigste fiets) \ntot €150 (voor een elektrische fiets).', font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT, padx=30, pady=15).pack(fill='both')
-    Label(algemene_informatie, text='Vrije plaatsen:'.format(vrije_plaatsen), padx=30, font=font_body_bold, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    vrije_plaatsen_label = Label(algemene_informatie, text='{}'.format(vrije_plaatsen), padx=30, font=font_body_big, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-
-    # ER MOET EEN LABEL WORDEN AANGEPAST
-    v = StringVar()
-    Label(algemene_informatie, textvariable=v).pack()
-    v.set("New Text!")
+    Label(algemene_informatie, text='Vrije plaatsen:', padx=30, font=font_body_bold, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    self.vrije_plaatsen = StringVar()
+    vrije_plaatsen_label = Label(algemene_informatie, textvariable=self.vrije_plaatsen, padx=30, font=font_body_big, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    self.vrije_plaatsen.set(info_opvragen())
 
   def update_info(self):
     print('Er zijn momenteel {} plaatsen vrij'.format(info_opvragen()))
+    self.vrije_plaatsen.set(info_opvragen())
 
 class PageOphalen(Frame):
   def __init__(self, parent, controller):
@@ -268,8 +265,8 @@ class PageOphalen(Frame):
 
     # Stallen velden
     entryUniekNummer = Entry(ophalen, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
-    entryUniekNummer.insert(0, 'UniekNummer:')
-    entryUniekNummer.pack(anchor='w', padx=30, pady=(30,30))
+    Label(ophalen, text='Unieknummer:', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both', pady=(20,0))
+    entryUniekNummer.pack(anchor='w', padx=30, pady=(0,30))
 
     # Als de button wordt ingedrukt...
     Button(ophalen, text='fiets ophalen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: fiets_ophalen(entryUniekNummer.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))

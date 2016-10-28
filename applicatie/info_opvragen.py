@@ -37,7 +37,6 @@ def persoonlijke_info(unieknummer):
     hours = totale_tijd // 3600
     minutes = (totale_tijd % 3600) // 60
     seconds = totale_tijd % 60
-    print(hours, minutes, seconds)
     messagebox.showinfo('informatie' , 'Hallo {}, \nIn het verleden is uw fiets: {}x gestald. \n\nUw totaal gestalde tijd is: \n{} uren, {} minuten en {} seconden.'.format(persoonsgegevens[0], len(stallingentuple), int(hours), int(minutes), int(seconds)))
   except sqlite3.OperationalError:
     messagebox.showinfo('error' , 'Sorry, uw unieke nummer is onjuist.')

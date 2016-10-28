@@ -54,7 +54,7 @@ def fiets_ophalen(unieknummer):
       messagebox.showinfo('error' , 'Sorry, uw fiets is al opgehaald.')
 
     else:
-      messagebox.showinfo('error' , 'Sorry, uw fiets is niet gestald.')
+      messagebox.showinfo('error' , 'Sorry, uw unieke nummer is onjuist.')
 
 
     # sluit connectie met database
