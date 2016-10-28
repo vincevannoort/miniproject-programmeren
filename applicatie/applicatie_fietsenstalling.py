@@ -57,8 +57,8 @@ class PageOverzicht(Frame):
     body.pack(side=TOP, fill=X)
 
     # Fonts
-    font_header = font.Font(family='Open Sans', size=32, weight='normal')
-    font_body = font.Font(family='Open Sans', size=16, weight='normal')
+    font_header = font.Font(family='Open Sans', size=24, weight='normal')
+    font_body = font.Font(family='Open Sans', size=12, weight='normal')
     Label(header, text='NS | Fietsenstalling', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 1. Registreren
@@ -108,8 +108,8 @@ class PageRegistreren(Frame):
     body.pack(side=TOP, fill=X)
 
     # Fonts
-    font_header = font.Font(family='Open Sans', size=32, weight='normal')
-    font_body = font.Font(family='Open Sans', size=16, weight='normal')
+    font_header = font.Font(family='Open Sans', size=24, weight='normal')
+    font_body = font.Font(family='Open Sans', size=12, weight='normal')
     Label(header, text='NS | Registreren', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 1. Registreren
@@ -155,8 +155,8 @@ class PageStallen(Frame):
     body.pack(side=TOP, fill=X)
 
     # Fonts
-    font_header = font.Font(family='Open Sans', size=32, weight='normal')
-    font_body = font.Font(family='Open Sans', size=16, weight='normal')
+    font_header = font.Font(family='Open Sans', size=24, weight='normal')
+    font_body = font.Font(family='Open Sans', size=12, weight='normal')
     Label(header, text='NS | Stallen', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 2. Fiets stallen
@@ -196,10 +196,10 @@ class PageInformatie(Frame):
     body.pack(side=TOP, fill=X)
 
     # Fonts
-    font_header = font.Font(family='Open Sans', size=32, weight='normal')
-    font_body = font.Font(family='Open Sans', size=16, weight='normal')
-    font_body_bold = font.Font(family='Open Sans', size=16, weight='bold')
-    font_body_big = font.Font(family='Open Sans', size=54, weight='normal')
+    font_header = font.Font(family='Open Sans', size=24, weight='normal')
+    font_body = font.Font(family='Open Sans', size=12, weight='normal')
+    font_body_bold = font.Font(family='Open Sans', size=12, weight='bold')
+    font_body_big = font.Font(family='Open Sans', size=36, weight='normal')
     Label(header, text='NS | Informatie ophalen', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 3. Informatie ophalen
@@ -245,8 +245,8 @@ class PageOphalen(Frame):
     body.pack(side=TOP, fill=X)
 
     # Fonts
-    font_header = font.Font(family='Open Sans', size=32, weight='normal')
-    font_body = font.Font(family='Open Sans', size=16, weight='normal')
+    font_header = font.Font(family='Open Sans', size=24, weight='normal')
+    font_body = font.Font(family='Open Sans', size=12, weight='normal')
     Label(header, text='NS | Fiets ophalen', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 4. Fiets ophalen
