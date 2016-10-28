@@ -36,6 +36,8 @@ class FietsenStallingApp(Tk):
   def show_frame(self, page_name):
       frame = self.frames[page_name]
       frame.tkraise()
+      if page_name == 'PageInformatie':
+          frame.update_info()
 
   # registratie functie aanroepen met inputs
   def registratie_doorvoeren(event, naam, tel, mail):
@@ -196,15 +198,41 @@ class PageInformatie(Frame):
     # Fonts
     font_header = font.Font(family='Open Sans', size=32, weight='normal')
     font_body = font.Font(family='Open Sans', size=16, weight='normal')
+    font_body_bold = font.Font(family='Open Sans', size=16, weight='bold')
+    font_body_big = font.Font(family='Open Sans', size=54, weight='normal')
     Label(header, text='NS | Informatie ophalen', font=font_header, bg='white', fg='#003082', anchor='w', padx=80).pack(fill='both', pady=30)
 
     # 3. Informatie ophalen
-    informatie = Frame(body, height=526, width=1120, bg='#E6B517')
+    informatie = Frame(body, height=526, width=432, bg='#E6B517')
     informatie.pack_propagate(0)
     informatie.grid(row=1, column=1, padx=(0, 40), pady=(35,40))
-    Label(informatie, text='Informatie ophalen', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(informatie, text='Als u geintreseerd bent in algmene- of persoonlijke informatie \nover de fietsenstalling, dan kunt u hier meer over lezen.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
-    Button(informatie, text='Terug  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(side='left', padx=30)
+    Label(informatie, text='Persoonlijke informatie', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
+    Label(informatie, text='Als u geintreseerd bent in algmene- of \npersoonlijke informatie over de fietsenstalling, \ndan kunt u hier meer over lezen.', padx=30, font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+
+    # Informtaie velden
+    entryUniekNummer = Entry(informatie, bd=0, highlightcolor='#CFA317', font=font_body, bg='white', justify=LEFT)
+    entryUniekNummer.insert(0, 'UniekNummer:')
+    entryUniekNummer.pack(anchor='w', padx=30, pady=(30,30))
+
+    Button(informatie, text='persoonlijke informatie ophalen  >', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: persoonlijke_info(entryUniekNummer.get())).pack(anchor='w', padx=(30, 10), pady=(0, 10))
+    Button(informatie, text='<  terug', padx=30, pady=10, font=font_body, bg='#0079D3', fg='white', anchor='w', justify=LEFT, command=lambda: controller.show_frame('PageOverzicht')).pack(anchor='w', padx=(30, 10))
+
+    algemene_informatie = Frame(body, height=526, width=688, bg='#E6B517')
+    algemene_informatie.pack_propagate(0)
+    algemene_informatie.grid(row=1, column=2, padx=(0, 40), pady=(35,40))
+    vrije_plaatsen = info_opvragen()
+    Label(algemene_informatie, text='Algemene informatie', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
+    Label(algemene_informatie, text='Op dit station kunt u een fiets huren bij de bewaakte fietsenstalling. \nOm een fiets te huren heeft u een geldig legitimatiebewijs nodig. \nU betaalt een borg varierend van €50 (voor de eenvoudigste fiets) \ntot €150 (voor een elektrische fiets).', font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT, padx=30, pady=15).pack(fill='both')
+    Label(algemene_informatie, text='Vrije plaatsen:'.format(vrije_plaatsen), padx=30, font=font_body_bold, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+    vrije_plaatsen_label = Label(algemene_informatie, text='{}'.format(vrije_plaatsen), padx=30, font=font_body_big, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
+
+    # ER MOET EEN LABEL WORDEN AANGEPAST
+    v = StringVar()
+    Label(algemene_informatie, textvariable=v).pack()
+    v.set("New Text!")
+
+  def update_info(self):
+    print('Er zijn momenteel {} plaatsen vrij'.format(info_opvragen()))
 
 class PageOphalen(Frame):
   def __init__(self, parent, controller):

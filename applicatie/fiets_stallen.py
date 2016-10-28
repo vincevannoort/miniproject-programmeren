@@ -67,4 +67,4 @@ def fiets_stallen(unieknummer):
     conn.close()
 
   except sqlite3.OperationalError:
-    messagebox.showinfo('error' , 'Sorry, een unieknummer bestaat alleen uit cijfers.')
+    messagebox.showinfo('error' , 'Sorry, uw unieke nummer is onjuist.')

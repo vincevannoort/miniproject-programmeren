@@ -44,7 +44,8 @@ def fiets_ophalen(unieknummer):
       # als tf2nummer gelijk is aan het ingevoerde nummer dan moet de fiets worden gestald.
       if tf2nummer == gebruiker_tf2nummer:
         end_time = datetime.datetime.now()
-        c.execute("UPDATE stallingen SET einddatum = '{}' WHERE unieknummer = '{}'".format(end_time, unieknummer))
+        # update alleen de laatste stalling van het unieke nummer
+        c.execute("UPDATE stallingen SET einddatum = '{}' WHERE unieknummer = '{}' and id = (SELECT MAX(id) FROM stallingen WHERE unieknummer = '{}')".format(end_time, unieknummer, unieknummer))
         messagebox.showinfo('voltooid' , 'Gelukt, uw fiets kan worden opgehaald!')
       else:
         messagebox.showinfo('error' , 'Sorry, uw code is niet juist! Probeer het opnieuw.')
@@ -61,4 +62,4 @@ def fiets_ophalen(unieknummer):
     conn.close()
 
   except sqlite3.OperationalError:
-    messagebox.showinfo('error' , 'Sorry, een unieknummer bestaat alleen uit cijfers.')
+    messagebox.showinfo('error' , 'Sorry, uw unieke nummer is onjuist.')
