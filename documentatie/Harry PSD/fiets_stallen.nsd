@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="http://structorizer.fisch.lu/" version="3.25" text="&#34;fiets_stallen(unieknummer)&#34;" comment="" color="ffffff" type="program" style="nice">
+	<children>
+		<case text="&#34;try:&#34;,&#34;succes&#34;,&#34;except sqlite3.OperationalError:&#34;" comment="" color="ffffff">
+			<qCase>
+				<instruction text="&#34;conn = sqlite3.connect('data/fietsenstalling.db')&#34;,&#34;c = conn.cursor()&#34;,&#34;c.execute('CREATE TABLE IF NOT EXISTS stallingen(id INTEGER PRIMARY KEY AUTOINCREMENT, unieknummer INTEGER NOT NULL,&#34;,&#34; startdatum DATETIME NOT NULL, einddatum DATETIME)')&#34;,&#34;&#34;,&#34;c.execute('SELECT * FROM registratie WHERE unieknummer = {}'.format(unieknummer))&#34;,&#34;resultaat = c.fetchone()&#34;,&#34;&#34;,&#34;c.execute(&#34;&#34;SELECT * FROM stallingen WHERE unieknummer = '{}' ORDER BY id DESC LIMIT 1&#34;&#34;.format(unieknummer))&#34;,&#34;fietsbestaat = c.fetchone()&#34;,&#34;&#34;,&#34;einddatum = None&#34;" comment="" color="ffffff" rotated="0"></instruction>
+				<alternative text="&#34;if fietsbestaat != None: &#34;" comment="" color="ffffff">
+					<qTrue>
+						<instruction text="&#34;einddatum = fietsbestaat[-1]&#34;" comment="" color="ffffff" rotated="0"></instruction>
+					</qTrue>
+					<qFalse>
+					</qFalse>
+				</alternative>
+				<alternative text="&#34;if resultaat and fietsbestaat == None or resultaat and einddatum != None:&#34;" comment="" color="ffffff">
+					<qTrue>
+						<instruction text="&#34;c.execute('SELECT * FROM registratie WHERE unieknummer = {}'.format(unieknummer))&#34;,&#34;persoonsgegevens = c.fetchone()&#34;,&#34;mobielnummer = persoonsgegevens[3][1:] # verwijder de 0 in het mobielnummer&#34;,&#34;naam = persoonsgegevens[2] # naam voor persoonlijkheid&#34;,&#34;tf2nummer = random.randrange(1000, 10000) # tf2 tussen 1000 - 9999&#34;,&#34;&#34;,&#34;message = client.messages.create(to=&#34;&#34;+31{}&#34;&#34;.format(mobielnummer), from_=&#34;&#34;+14157422845&#34;&#34;, &#34;,&#34;body=&#34;&#34;Hallo {}, je code is: {}.&#34;&#34;.format(naam, tf2nummer))&#34;,&#34;&#34;,&#34;&#34;,&#34;gebruiker_tf2nummer = simpledialog.askinteger('two factor authenticatie' ,&#34;,&#34; 'Vul de code in die je hebt gekregen via een sms bericht: ')&#34;,&#34;print(gebruiker_tf2nummer)&#34;" comment="" color="ffffff" rotated="0"></instruction>
+						<alternative text="&#34;if tf2nummer == gebruiker_tf2nummer:&#34;" comment="" color="ffffff">
+							<qTrue>
+								<instruction text="&#34;current_time = datetime.datetime.now()&#34;,&#34;c.execute(&#34;&#34;INSERT INTO stallingen (unieknummer, startdatum) VALUES ('{}', '{}')&#34;&#34;.format(unieknummer, current_time))&#34;,&#34;messagebox.showinfo('voltooid' , 'Gelukt, uw fiets wordt gestald!')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+							</qTrue>
+							<qFalse>
+								<instruction text="&#34;messagebox.showinfo('error' ,&#34;,&#34; 'Sorry, uw code is niet&#34;,&#34;juist! Probeer het opnieuw.')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+							</qFalse>
+						</alternative>
+					</qTrue>
+					<qFalse>
+						<alternative text="&#34;elif fietsbestaat != None:&#34;" comment="" color="ffffff">
+							<qTrue>
+								<instruction text="&#34;messagebox.showinfo('error' ,&#34;,&#34; 'Sorry, uw fiets staat al&#34;,&#34; gestald in onze stalling.')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+							</qTrue>
+							<qFalse>
+								<instruction text="&#34;messagebox.showinfo('error' ,&#34;,&#34; 'Sorry, er bestaat geen&#34;,&#34;fiets bij dit unieke nummer.')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+							</qFalse>
+						</alternative>
+					</qFalse>
+				</alternative>
+				<instruction text="&#34;conn.commit()&#34;,&#34;conn.close()&#34;" comment="" color="ffffff" rotated="0"></instruction>
+			</qCase>
+			<qCase>
+				<instruction text="&#34;messagebox.showinfo('error' ,&#34;,&#34; 'Sorry, een unieknummer&#34;,&#34; bestaat alleen uit cijfers.')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+			</qCase>
+		</case>
+	</children>
+</root>
