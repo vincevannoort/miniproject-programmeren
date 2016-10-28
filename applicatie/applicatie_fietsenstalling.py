@@ -221,7 +221,7 @@ class PageInformatie(Frame):
     algemene_informatie.pack_propagate(0)
     algemene_informatie.grid(row=1, column=2, padx=(0, 40), pady=(35,40))
     Label(algemene_informatie, text='Algemene informatie', font=font_header, bg='#E6B517', fg='#003082', anchor='w', padx=30, pady=15).pack(fill='both')
-    Label(algemene_informatie, text='Op dit station kunt u een fiets huren bij de bewaakte fietsenstalling. \nOm een fiets te huren heeft u een geldig legitimatiebewijs nodig. \nU betaalt een borg varierend van €50 (voor de eenvoudigste fiets) \ntot €150 (voor een elektrische fiets).', font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT, padx=30, pady=15).pack(fill='both')
+    Label(algemene_informatie, text='Op dit station kun u uw fiets stallen door middel van een applicatie. \nOm een fiets te kunnen stallen heeft u een geldig mobiel nummer nodig. \nUw fiets mag maximaal 2 maanden gestald worden.', font=font_body, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT, padx=30, pady=15).pack(fill='both')
     Label(algemene_informatie, text='Vrije plaatsen:', padx=30, font=font_body_bold, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
     self.vrije_plaatsen = StringVar()
     vrije_plaatsen_label = Label(algemene_informatie, textvariable=self.vrije_plaatsen, padx=30, font=font_body_big, bg='#E6B517', fg='#392D05', anchor='w', justify=LEFT).pack(fill='both')
