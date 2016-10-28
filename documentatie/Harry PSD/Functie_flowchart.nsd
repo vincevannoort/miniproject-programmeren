@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root xmlns:nsd="http://structorizer.fisch.lu/" version="3.25" text="&#34;Functie flowchart&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+<root xmlns:nsd="http://structorizer.fisch.lu/" version="3.25" text="&#34;Functie flowchart&#34;" comment="" color="ffffff" type="program" style="nice">
 	<children>
-		<instruction text="&#34;Pagina overzicht&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-		<case text="&#34;Button:&#34;,&#34;Registreren:&#34;,&#34;Fiets stallen:&#34;,&#34;Informatie ophalen:&#34;,&#34;Fiets ophalen:&#34;" comment="&#34;&#34;" color="ffffff">
+		<instruction text="&#34;Pagina overzicht&#34;" comment="" color="ffffff" rotated="0"></instruction>
+		<case text="&#34;Button:&#34;,&#34;Registreren:&#34;,&#34;Fiets stallen:&#34;,&#34;Informatie ophalen:&#34;,&#34;Fiets ophalen:&#34;" comment="" color="ffffff">
 			<qCase>
-				<case text="&#34;Button:&#34;,&#34;registreer &#62;&#34;,&#34;&#60; terug&#34;" comment="&#34;&#34;" color="ffffff">
+				<case text="&#34;Button:&#34;,&#34;registreer &#62;&#34;,&#34;&#60; terug&#34;" comment="" color="ffffff">
 					<qCase>
-						<instruction text="&#34;registratie(entryNaam.get(), entryTel.get(), entryEmail.get())&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-						<instruction text="&#34;def registratie(naam, tel, mail):&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;registratie(entryNaam.get(), entryTel.get(), entryEmail.get())&#34;" comment="" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;def registratie(naam, tel, mail):&#34;" comment="" color="ffffff" rotated="0"></instruction>
+					</qCase>
+					<qCase>
+						<instruction text="&#34;controller.show_frame('PageOverzicht')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+					</qCase>
+				</case>
+			</qCase>
+			<qCase>
+				<case text="&#34;Button:&#34;,&#34;stal fiets &#62;&#34;,&#34;&#60; terug&#34;" comment="" color="ffffff">
+					<qCase>
+						<instruction text="&#34;fiets_stallen(entryUniekNummer.get())&#34;" comment="" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;def fiets_stallen(unieknummer):&#34;" comment="" color="ffffff" rotated="0"></instruction>
+					</qCase>
+					<qCase>
+						<instruction text="&#34;controller.show_frame('PageOverzicht')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+					</qCase>
+				</case>
+			</qCase>
+			<qCase>
+				<case text="&#34;Button:&#34;,&#34;persoonlijke informatie ophalen&#34;,&#34;terug&#34;" comment="&#34;&#34;" color="ffffff">
+					<qCase>
+						<instruction text="&#34;persoonlijke_info(entryUniekNummer.get())&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;persoonlijke_info(unieknummer):&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
 					</qCase>
 					<qCase>
 						<instruction text="&#34;controller.show_frame('PageOverzicht')&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
@@ -15,27 +37,13 @@
 				</case>
 			</qCase>
 			<qCase>
-				<case text="&#34;Button:&#34;,&#34;stal fiets &#62;&#34;,&#34;&#60; terug&#34;" comment="&#34;&#34;" color="ffffff">
+				<case text="&#34;Button:&#34;,&#34;fiets ophalen &#62;&#34;,&#34;&#60; terug&#34;" comment="" color="ffffff">
 					<qCase>
-						<instruction text="&#34;fiets_stallen(entryUniekNummer.get())&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-						<instruction text="&#34;def fiets_stallen(unieknummer):&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;fiets_ophalen(entryUniekNummer.get())&#34;" comment="" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;def fiets_ophalen(unieknummer):&#34;" comment="" color="ffffff" rotated="0"></instruction>
 					</qCase>
 					<qCase>
-						<instruction text="&#34;controller.show_frame('PageOverzicht')&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-					</qCase>
-				</case>
-			</qCase>
-			<qCase>
-				<instruction text="&#34;Button:&#34;,&#34;&#60; terug&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-			</qCase>
-			<qCase>
-				<case text="&#34;Button:&#34;,&#34;fiets ophalen &#62;&#34;,&#34;&#60; terug&#34;" comment="&#34;&#34;" color="ffffff">
-					<qCase>
-						<instruction text="&#34;fiets_ophalen(entryUniekNummer.get())&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-						<instruction text="&#34;def fiets_ophalen(unieknummer):&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
-					</qCase>
-					<qCase>
-						<instruction text="&#34;controller.show_frame('PageOverzicht')&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+						<instruction text="&#34;controller.show_frame('PageOverzicht')&#34;" comment="" color="ffffff" rotated="0"></instruction>
 					</qCase>
 				</case>
 			</qCase>

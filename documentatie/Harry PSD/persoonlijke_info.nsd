@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root xmlns:nsd="http://structorizer.fisch.lu/" version="3.25" text="&#34;persoonlijke_info(unieknummer)&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+<root xmlns:nsd="http://structorizer.fisch.lu/" version="3.25" text="&#34;persoonlijke_info(unieknummer)&#34;" comment="" color="ffffff" type="program" style="nice">
 	<children>
-		<instruction text="&#34;conn = sqlite3.connect('data/fietsenstalling.db')&#34;,&#34;c = conn.cursor()&#34;,&#34;c.execute('SELECT naam, tel, email FROM registratie WHERE unieknummer = {}'.format(unieknummer))&#34;,&#34;uitdraai = c.fetchone()&#34;,&#34;print('Hallo, {}'.format(uitdraai[0]))&#34;,&#34;print('Uw 06-nummer is {}'.format(uitdraai[1]))&#34;,&#34;print('Uw email adres is {}'.format(uitdraai[2]))&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="" comment="" color="ffffff" rotated="0"></instruction>
+		<case text="&#34;try:&#34;,&#34;succes&#34;,&#34;except sqlite3.OperationalError:&#34;" comment="" color="ffffff">
+			<qCase>
+				<instruction text="&#34;conn = sqlite3.connect('data/fietsenstalling.db')&#34;,&#34;c = conn.cursor()&#34;,&#34;c.execute('SELECT naam, tel, email FROM registratie WHERE unieknummer = {}'.format(unieknummer))&#34;,&#34;persoonsgegevens = c.fetchone()&#34;,&#34;c.execute(&#34;&#34;SELECT * FROM stallingen WHERE unieknummer = '{}'&#34;&#34;.format(unieknummer))&#34;,&#34;stallingentuple = c.fetchall()&#34;,&#34;&#34;,&#34;totale_tijd = 0&#34;" comment="" color="ffffff" rotated="0"></instruction>
+				<for text="&#34;For stalling &#60;- stallingtuple:&#34;" comment="" counterVar="For stalling" startValue="stallingtuple:" stepConst="1" style="FREETEXT" color="ffffff">
+					<qFor>
+						<alternative text="&#34;if stalling[3]:&#34;" comment="" color="ffffff">
+							<qTrue>
+								<instruction text="&#34;gestald = datetime.datetime.strptime(stalling[2], '%Y-%m-%d %H:%M:%S.%f')&#34;,&#34;opgehaald = datetime.datetime.strptime(stalling[3], '%Y-%m-%d %H:%M:%S.%f')&#34;,&#34;gestalde_tijd = opgehaald - gestald&#34;,&#34;gestalde_tijd = gestalde_tijd.total_seconds()&#34;,&#34;totale_tijd = totale_tijd + gestalde_tijd&#34;" comment="" color="ffffff" rotated="0"></instruction>
+							</qTrue>
+							<qFalse>
+							</qFalse>
+						</alternative>
+					</qFor>
+				</for>
+				<instruction text="&#34;hours = totale_tijd // 3600&#34;,&#34;minutes = (totale_tijd % 3600) // 60&#34;,&#34;seconds = totale_tijd % 60&#34;,&#34;print(hours, minutes, seconds)&#34;,&#34;messagebox.showinfo('informatie' , 'Hallo {}, \nIn het verleden is uw fiets: {}x gestald. \n\nUw totaal gestalde tijd is:&#34;,&#34; \n{} uren, {} minuten en {} seconden.'.format(persoonsgegevens[0], len(stallingentuple), int(hours), int(minutes), int(seconds)))&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+			</qCase>
+			<qCase>
+				<instruction text="&#34;messagebox.showinfo('error' ,&#34;,&#34;'Sorry, uw unieke nummer&#34;,&#34;is onjuist.')&#34;" comment="" color="ffffff" rotated="0"></instruction>
+			</qCase>
+		</case>
 	</children>
 </root>
