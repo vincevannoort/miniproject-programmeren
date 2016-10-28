@@ -10,13 +10,9 @@ De functies die de app bevat zijn:
 ![home](https://raw.githubusercontent.com/vincevannoort/miniproject-programmeren/master/ontwerp/exports/Home.png?token=AP6HvcMl1B_x0JNzF62MqBbczT2j4idPks5YGv_rwA%3D%3D)
 ![home](https://raw.githubusercontent.com/vincevannoort/miniproject-programmeren/master/ontwerp/exports/Registreren.png?token=AP6HvXZoCp_TpiL-2haoSRw8Ip1yMgswks5YGwALwA%3D%3D)
 
-## Setup proces voor de applicatie
-Instructies voor de eerste keer(eenmalig) installeren:
+### Instructies voor de eerste keer(eenmalig) installeren:
+- Voer FirstTimeInstall.bat uit.
+- klik op de pythonfile: applicatie_fietsenstalling.py
 
-1. Voer FirstTimeInstall.bat uit.
-2. klik op de pythonfile: applicatie_fietsenstalling.py
-____________________________________________________________________________________________________________________________________________________________________________
-
-Instructies voor het uitvoeren NA de eerste keer instalatie.
-
+### Instructies voor het uitvoeren NA de eerste keer instalatie.
 Na de eerste installiatie kan het bestand applicatie_fietsenstalling.py uitgevoerd worden zonder het batbestand.
